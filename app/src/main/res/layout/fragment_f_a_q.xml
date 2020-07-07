@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/whiteColor"
+    tools:context=".fragments.FAQFragment">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp">
+
+        <ImageView
+            android:id="@+id/faqAppLogo"
+            android:layout_width="140dp"
+            android:layout_height="140dp"
+            android:src="@drawable/logo"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="15dp"/>
+
+        <TextView
+            android:id="@+id/textview1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/app_name"
+            android:textSize="29sp"
+            android:textColor="@color/colorPrimary"
+            android:layout_below="@id/faqAppLogo"
+            android:layout_centerHorizontal="true"/>
+
+        <TextView
+            android:id="@+id/fineLine1"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="#a9a9a9"
+            android:layout_below="@id/textview1"
+            android:layout_marginTop="20dp"/>
+
+        <TextView
+            android:id="@+id/textview2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/q1"
+            android:layout_below="@id/fineLine1"
+            android:textSize="19sp"
+            android:textColor="@color/blackColor"
+            android:layout_margin="10dp"/>
+
+        <TextView
+            android:id="@+id/textview3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="19sp"
+            android:layout_below="@id/textview2"
+            android:text="@string/a1"
+            android:layout_margin="10dp"/>
+
+        <TextView
+            android:id="@+id/textview4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/q2"
+            android:layout_below="@id/textview3"
+            android:textSize="19sp"
+            android:textColor="@color/blackColor"
+            android:layout_margin="10dp"/>
+
+        <TextView
+            android:id="@+id/textview5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="19sp"
+            android:layout_below="@id/textview4"
+            android:text="@string/a2"
+            android:layout_margin="10dp"/>
+
+        <TextView
+            android:id="@+id/textview6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/q3"
+            android:layout_below="@id/textview5"
+            android:textSize="19sp"
+            android:textColor="@color/blackColor"
+            android:layout_margin="10dp"/>
+
+        <TextView
+            android:id="@+id/textview7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="19sp"
+            android:layout_below="@id/textview6"
+            android:text="@string/a3"
+            android:layout_margin="10dp"/>
+
+        <TextView
+            android:id="@+id/textview8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/q4"
+            android:layout_below="@id/textview7"
+            android:textSize="19sp"
+            android:textColor="@color/blackColor"
+            android:layout_margin="10dp"/>
+
+        <TextView
+            android:id="@+id/textview9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="19sp"
+            android:layout_below="@id/textview8"
+            android:text="@string/a4"
+            android:layout_margin="10dp"/>
+
+        <TextView
+            android:id="@+id/textview10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/q5"
+            android:layout_below="@id/textview9"
+            android:textSize="19sp"
+            android:textColor="@color/blackColor"
+            android:layout_margin="10dp"/>
+
+        <TextView
+            android:id="@+id/textview11"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="19sp"
+            android:layout_below="@id/textview10"
+            android:text="@string/a5"
+            android:layout_margin="10dp"/>
+
+    </RelativeLayout>
+
+</ScrollView>

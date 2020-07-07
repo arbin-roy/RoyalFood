@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.MyProfileFragment"
+    android:background="@color/whiteColor">
+
+    <ImageView
+        android:id="@+id/imgProfileFragment"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/user_profile"
+        android:layout_marginTop="50dp"
+        android:layout_marginStart="10dp"/>
+
+    <TextView
+        android:id="@+id/txtActualName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/imgProfileFragment"
+        android:layout_marginTop="85dp"
+        android:text="@string/dummy_text"
+        android:textSize="25sp"
+        android:layout_marginStart="10dp"
+        android:layout_centerHorizontal="true"/>
+
+    <TextView
+        android:id="@+id/fineLine"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/imgProfileFragment"
+        android:background="#a9a9a9"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"/>
+
+    <TextView
+        android:id="@+id/txtActualEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/fineLine"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:text="@string/dummy_text"
+        android:textSize="20sp"
+        android:drawableStart="@drawable/ic_email"/>
+
+    <TextView
+        android:id="@+id/txtActualMobile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txtActualEmail"
+        android:text="@string/dummy_text"
+        android:textSize="20sp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        android:drawableStart="@drawable/ic_mobile" />
+
+    <TextView
+        android:id="@+id/txtActualAddress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txtActualMobile"
+        android:text="@string/dummy_text"
+        android:textSize="20sp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        android:drawableStart="@drawable/ic_location" />
+
+    <TextView
+        android:id="@+id/fineLine1"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/txtActualAddress"
+        android:background="#a9a9a9"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"/>
+
+</RelativeLayout>

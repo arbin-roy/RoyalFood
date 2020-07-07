@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.CartItemFragment">
+
+    <TextView
+        android:id="@+id/txtStaticOrderFrom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/ordering_from"
+        android:textColor="#000000"
+        android:padding="10dp"
+        android:textSize="18sp"/>
+
+    <TextView
+        android:id="@+id/txtcartItemResName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/dummy_text"
+        android:layout_toEndOf="@id/txtStaticOrderFrom"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:textColor="#000000"
+        android:padding="10dp"/>
+
+    <TextView
+        android:id="@+id/fineLine"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="#a9a9a9"
+        android:layout_below="@id/txtcartItemResName"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerCartItem"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/fineLine"
+        android:layout_above="@id/btnPlaceOrder"
+        android:layout_margin="5dp"/>
+
+    <Button
+        android:id="@+id/btnPlaceOrder"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:text="@string/dummy_text"
+        android:background="@color/colorPrimary"
+        android:textColor="@color/whiteColor"
+        android:textSize="18sp"/>
+
+    <RelativeLayout
+        android:id="@+id/rlCartItem"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/whiteColor">
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"/>
+
+    </RelativeLayout>
+
+</RelativeLayout>

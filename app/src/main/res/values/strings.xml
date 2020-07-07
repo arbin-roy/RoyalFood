@@ -1,0 +1,66 @@
+<resources>
+    <string name="app_name">RoyalFood</string>
+    <string name="menu_home">Home</string>
+    <string name="menu_my_profile">My Profile</string>
+    <string name="menu_fav_restaurants">Favorite Restaurants</string>
+    <string name="menu_order_history">Order History</string>
+    <string name="menu_faq">FAQs</string>
+    <string name="menu_logout">Log out</string>
+    <string name="open_drawer">Open Drawer</string>
+    <string name="close_drawer">Close Drawer</string>
+    <string name="btn_Login">Login</string>
+    <string name="forgot_password"><u>Forgot Password?</u></string>
+    <string name="register_yourself"><u>Don\'t have an account? Sign up now</u></string>
+    <string name="enter_mobile_number">Enter your mobile number(10 Digits)</string>
+    <string name="enter_password">Enter password</string>
+    <string name="register_name">  Name (Min 3 Characters)</string>
+    <string name="register_email">  Email Address</string>
+    <string name="register_mobile">  Mobile Number (10 digits)</string>
+    <string name="register_address">  Delivery Address</string>
+    <string name="register_password">  Password (Min. 4 Characters)</string>
+    <string name="register_confirm_password">  Confirm Password</string>
+    <string name="btn_Register">Register</string>
+    <string name="forgot_password_help_text">Enter your registerd email and Mobile number below:</string>
+    <string name="reset_password_OTP_note">Note: If you are trying to change Password more than once in a day. Kindly use the same OTP send earlier.</string>
+    <string name="reset_new">Enter New Password (Min. 4 Characters)</string>
+    <string name="reset_confirm">Confirm New Password</string>
+    <string name="reset_password_OTP">OTP (4 Character)</string>
+    <string name="preference_file_name">RoyalFood Preference File</string>
+    <string name="user_id">User ID</string>
+    <string name="user_data_name">User Nme</string>
+    <string name="user_data_mobile">User Mobile</string>
+    <string name="user_data_email">User Email</string>
+    <string name="user_data_address">User Address</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="all_resturant_fragment">All Restaurant Fragment</string>
+    <string name="my_profile_fragment">My Profile Fragment</string>
+    <string name="favorite_resturant_fragment">Favorite restaurant fragment</string>
+    <string name="order_history_fragment">Your previous orders are listed below: </string>
+    <string name="faq_fragment">FAQ Fragment</string>
+    <string name="logout_fragment">Logout Fragment</string>
+    <string name="choose_from_menu">Choose from menu listed below:</string>
+    <string name="empty_restaurant_screen">You do not have any Favorite restaurants</string>
+    <string name="order_successfully_placed">Your order successfully placed</string>
+    <string name="sort_restaurant">Sort Restaurant</string>
+    <string name="q1"><b>1. Can I order from multiple restaurants?</b></string>
+    <string name="a1"><font color= "@color/blackColor"><u><i>Ans:</i></u></font> No you can only order from one restaurant, and one item at a time.</string>
+    <string name="q2"><b>2. Will the food come to my door step?</b></string>
+    <string name="a2"><font color= "@color/blackColor"><u><i>Ans:</i></u></font> No, as it\'s just a concept app. Your ordered food will not come to your doorstep.</string>
+    <string name="q3"><b>3. Is my data safe, which I used to register myself?</b></string>
+    <string name="a3"><font color= "@color/blackColor"><u><i>Ans:</i></u></font> Your data is securely saved in Internshala hosted server. Rest I don\'t know ¯\\_(ツ)_/¯ !</string>
+    <string name="q4"><b>4. If the app crashes at some point, what should I do?</b></string>
+    <string name="a4"><font color= "@color/blackColor"><u><i>Ans:</i></u></font> Try the below steps:- \n\n a. Clear the app data from system settings, and run the app again. \n \n b. Force stop the application and clear it from the memory(Recent screen), than run again. \n \n c. If above solutions does not work, keep a note of the thing you are doing which is causing the crash, and then contact the developer.</string>
+    <string name="q5"><b>5. Connection Establishment failed?</b></string>
+    <string name="a5"><font color= "@color/blackColor"><u><i>Ans:</i></u></font> This problem mainly occurs, when the app is unable to communicate with the server. \n \nTo resolve this issue, try the below steps:- \n\n a. Check your internet connection is not broken. \n\n b. Restart the app, and check again. \n\n c. Server is down, come back later!</string>
+    <string name="no_order_history">You haven\'t placed any orders yet</string>
+    <string name="enter_the_otp_send_to_the_registered_mail_address">Enter the OTP send to the Registered mail address</string>
+    <string name="btn_Submit">Submit</string>
+    <string name="dummy_text">Dummy Text</string>
+    <string name="ordering_from">Ordering from:</string>
+    <string name="btn_Next">Next</string>
+    <string name="btn_Proceed_to_cart">Proceed to Cart</string>
+    <string name="btn_OK">OK</string>
+    <string name="each_person">/Person</string>
+    <string name="btn_Add">ADD</string>
+    <string name="static_Rs">Rs:</string>
+</resources>
