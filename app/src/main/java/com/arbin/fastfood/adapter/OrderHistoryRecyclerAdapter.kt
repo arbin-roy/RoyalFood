@@ -8,6 +8,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.arbin.fastfood.R
+import com.arbin.fastfood.model.MenuItem
 import com.arbin.fastfood.model.OrderedRestaurantDetails
 
 class OrderHistoryRecyclerAdapter(val context: Context, private val restaurantName: ArrayList<OrderedRestaurantDetails>): RecyclerView.Adapter<OrderHistoryRecyclerAdapter.OrderViewHolder>() {
@@ -27,7 +28,21 @@ class OrderHistoryRecyclerAdapter(val context: Context, private val restaurantNa
         val i = item.orderedDate.indexOf(' ')
         holder.txtOrderedDate.text= item.orderedDate.substring(0, i)
         holder.layoutManager= LinearLayoutManager(context)
-        holder.childAdapter= OrderHistoryChildAdapter(context, item.menuList)
+
+        val foodItem = ArrayList<MenuItem>()
+        val orderHistoryObject = restaurantName[position]
+        val foodArray = orderHistoryObject.foodList
+        for (data in 0 until orderHistoryObject.foodList.length()){
+            val foodObject = foodArray.getJSONObject(data)
+            val details = MenuItem(
+                foodObject.getString("food_item_id"),
+                foodObject.getString("name"),
+                foodObject.getString("cost")
+            )
+            foodItem.add(details)
+        }
+
+        holder.childAdapter= OrderHistoryChildAdapter(context, foodItem)
         holder.childRecycler.adapter= holder.childAdapter
         holder.childRecycler.layoutManager= holder.layoutManager
     }

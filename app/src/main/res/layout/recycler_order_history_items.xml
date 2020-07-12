@@ -6,6 +6,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
         android:weightSum="7"
         android:orientation="horizontal">
 
@@ -31,7 +33,7 @@
             android:layout_weight="4.5"
             android:text="@string/dummy_text"
             android:textColor="#000000"
-            android:textSize="18sp"/>
+            android:textSize="17sp"/>
 
         <TextView
             android:layout_width="0dp"
@@ -52,7 +54,8 @@
             android:layout_marginStart="3dp"
             android:textSize="18sp"
             android:textColor="#000000"
-            android:text="@string/dummy_text"/>
+            android:text="@string/dummy_text"
+            android:gravity="center_horizontal"/>
 
     </LinearLayout>
 

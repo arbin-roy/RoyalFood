@@ -31,7 +31,7 @@ class OrderHistoryFragment : Fragment() {
     lateinit var recyclerAdapter: OrderHistoryRecyclerAdapter
     lateinit var rlOrderHistory: RelativeLayout
     lateinit var noOrderHistory: RelativeLayout
-    var itemList = ArrayList<MenuItem>()
+    //var itemList = ArrayList<MenuItem>()
     var nameList = ArrayList<OrderedRestaurantDetails>()
     private var iD: String? ="Not Found"
 
@@ -59,7 +59,7 @@ class OrderHistoryFragment : Fragment() {
                     for (i in 0 until data.length()){
                         val dataObject= data.getJSONObject(i)
                         val foodArray= dataObject.getJSONArray("food_items")
-                        for (j in 0 until foodArray.length()){
+                        /*for (j in 0 until foodArray.length()){
                             val foodDetails= foodArray.getJSONObject(j)
                             val details = MenuItem(
                                 foodDetails.getString("food_item_id"),
@@ -67,11 +67,11 @@ class OrderHistoryFragment : Fragment() {
                                 foodDetails.getString("cost")
                             )
                             itemList.add(details)
-                        }
+                        }*/
                         val restaurantName = OrderedRestaurantDetails(
                             dataObject.getString("restaurant_name"),
                             dataObject.getString("order_placed_at"),
-                            itemList
+                            foodArray
                         )
 
                         nameList.add(restaurantName)

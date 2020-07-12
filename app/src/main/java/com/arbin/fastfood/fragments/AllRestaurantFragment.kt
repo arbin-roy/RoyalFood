@@ -6,10 +6,12 @@ import android.content.Intent
 import android.os.Bundle
 import android.provider.Settings
 import android.view.*
+import android.widget.EditText
 import androidx.fragment.app.Fragment
 import android.widget.RelativeLayout
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.android.volley.Response
@@ -33,7 +35,9 @@ class AllRestaurantFragment : Fragment() {
     lateinit var layoutManager: RecyclerView.LayoutManager
     lateinit var progressLayout: RelativeLayout
     var resInfoList = ArrayList<Restaurant>()
+    var displayList = ArrayList<Restaurant>()
     private var checkedItem: Int = 0
+    private lateinit var searchView: SearchView
 
     private val costComparator = Comparator<Restaurant>{ res1, res2 ->
         if (res1.cost_for_one.compareTo(res2.cost_for_one) == 0){
@@ -81,7 +85,8 @@ class AllRestaurantFragment : Fragment() {
                                 resJsonObject.getString("image_url")
                             )
                             resInfoList.add(restaurantObject)
-                            recyclerAdapter = HomeRecyclerAdapter(activity as Context, resInfoList)
+                            displayList.add(restaurantObject)
+                            recyclerAdapter = HomeRecyclerAdapter(activity as Context, displayList)
 
                             recyclerAllRes.adapter = recyclerAdapter
                             recyclerAllRes.layoutManager = layoutManager
@@ -133,6 +138,11 @@ class AllRestaurantFragment : Fragment() {
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.sort_restaurant, menu)
+        val searchItem = menu.findItem(R.id.search)
+        searchView = searchItem.actionView as SearchView
+
+        val edit = searchView.findViewById<EditText>(R.id.search_src_text)
+        edit.hint = "Search here..."
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -145,17 +155,17 @@ class AllRestaurantFragment : Fragment() {
                     fun(_: DialogInterface, option: Int){
                         when(option){
                             0 -> {
-                                Collections.sort(resInfoList, costComparator)
+                                Collections.sort(displayList, costComparator)
                                 checkedItem = 0
                             }
                             1 -> {
-                                Collections.sort(resInfoList, costComparator)
-                                resInfoList.reverse()
+                                Collections.sort(displayList, costComparator)
+                                displayList.reverse()
                                 checkedItem = 1
                             }
                             2 -> {
-                                Collections.sort(resInfoList, ratingComparator)
-                                resInfoList.reverse()
+                                Collections.sort(displayList, ratingComparator)
+                                displayList.reverse()
                                 checkedItem = 2
                             }
                         }
@@ -163,7 +173,7 @@ class AllRestaurantFragment : Fragment() {
                 ))
                 dialog.setPositiveButton("Sort"){ _ , _ ->
                     if (checkedItem == 0){
-                        Collections.sort(resInfoList, costComparator)
+                        Collections.sort(displayList, costComparator)
                         recyclerAdapter.notifyDataSetChanged()
                     }else{
                         recyclerAdapter.notifyDataSetChanged()
@@ -174,6 +184,32 @@ class AllRestaurantFragment : Fragment() {
                 }
                 dialog.create()
                 dialog.show()
+            }
+            R.id.search -> {
+                searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
+                    override fun onQueryTextSubmit(query: String?): Boolean {
+                        return true
+                    }
+
+                    override fun onQueryTextChange(newText: String?): Boolean {
+                        if (newText!!.isNotEmpty()){
+                            displayList.clear()
+                            val search = newText.toLowerCase(Locale.ROOT)
+                            resInfoList.forEach {
+                                if (it.res_name.toLowerCase(Locale.ROOT).contains(search)){
+                                    displayList.add(it)
+                                }
+                            }
+                            recyclerAdapter.notifyDataSetChanged()
+                        }else{
+                            displayList.clear()
+                            displayList.addAll(resInfoList)
+                            checkedItem = 0
+                            recyclerAdapter.notifyDataSetChanged()
+                        }
+                        return true
+                    }
+                })
             }
         }
         return super.onOptionsItemSelected(item)

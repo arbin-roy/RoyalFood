@@ -41,7 +41,7 @@
     <string name="choose_from_menu">Choose from menu listed below:</string>
     <string name="empty_restaurant_screen">You do not have any Favorite restaurants</string>
     <string name="order_successfully_placed">Your order successfully placed</string>
-    <string name="sort_restaurant">Sort Restaurant</string>
+    <string name="sort_restaurant">Sort</string>
     <string name="q1"><b>1. Can I order from multiple restaurants?</b></string>
     <string name="a1"><font color= "@color/blackColor"><u><i>Ans:</i></u></font> No you can only order from one restaurant, and one item at a time.</string>
     <string name="q2"><b>2. Will the food come to my door step?</b></string>
@@ -63,4 +63,5 @@
     <string name="each_person">/Person</string>
     <string name="btn_Add">ADD</string>
     <string name="static_Rs">Rs:</string>
+    <string name="search_restaurant">Search Restaurant</string>
 </resources>

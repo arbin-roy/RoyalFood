@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.arbin.fastfood.R
 import com.arbin.fastfood.model.MenuItem
 
-class OrderHistoryChildAdapter(val context: Context, val list: ArrayList<MenuItem>): RecyclerView.Adapter<OrderHistoryChildAdapter.ChildViewHolder>() {
+class OrderHistoryChildAdapter(val context: Context, private val foodList: ArrayList<MenuItem>): RecyclerView.Adapter<OrderHistoryChildAdapter.ChildViewHolder>() {
 
     class ChildViewHolder(val view: View): RecyclerView.ViewHolder(view){
         val txtOrderedItemName: TextView = view.findViewById(R.id.txtOrderedItemName)
@@ -22,13 +22,12 @@ class OrderHistoryChildAdapter(val context: Context, val list: ArrayList<MenuIte
     }
 
     override fun getItemCount(): Int {
-        return list.size
+        return foodList.size
     }
 
     override fun onBindViewHolder(holder: ChildViewHolder, position: Int) {
-        val item= list[position]
+        val item= foodList[position]
         holder.txtOrderedItemName.text = item.itemName
         holder.txtOrderedItemPrice.text = item.itemPrice
     }
-
 }

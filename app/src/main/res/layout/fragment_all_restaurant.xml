@@ -5,7 +5,6 @@
     android:layout_height="match_parent"
     tools:context=".fragments.AllRestaurantFragment">
 
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerAllRes"
         android:layout_width="match_parent"
