@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.view.MenuItem
 import android.widget.FrameLayout
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AlertDialog
 import androidx.coordinatorlayout.widget.CoordinatorLayout
@@ -82,26 +83,37 @@ class MainActivity : AppCompatActivity(){
                     openHome()
                     drawerLayout.closeDrawers()
                 }
+
                 R.id.profile->{
                     supportFragmentManager.beginTransaction().replace(R.id.frameLayout, MyProfileFragment()).commit()
                     supportActionBar?.title = "My Profile"
                     drawerLayout.closeDrawers()
                 }
+
                 R.id.favorite->{
                     supportFragmentManager.beginTransaction().replace(R.id.frameLayout, FavoriteResturantFragment()).commit()
                     supportActionBar?.title = "Favorite Restaurants"
                     drawerLayout.closeDrawers()
                 }
+
                 R.id.orderHistory->{
                     supportFragmentManager.beginTransaction().replace(R.id.frameLayout, OrderHistoryFragment()).commit()
                     supportActionBar?.title = "Order History"
                     drawerLayout.closeDrawers()
                 }
+
                 R.id.faqs->{
                     supportFragmentManager.beginTransaction().replace(R.id.frameLayout, FAQFragment()).commit()
                     supportActionBar?.title = "Frequently Asked Questions"
                     drawerLayout.closeDrawers()
                 }
+
+                R.id.aboutApp -> {
+                    supportFragmentManager.beginTransaction().replace(R.id.frameLayout, AboutAppFragment()).commit()
+                    supportActionBar?.title = "About App"
+                    drawerLayout.closeDrawers()
+                }
+
                 R.id.logout->{
                     val dialog= AlertDialog.Builder(this@MainActivity)
                     dialog.setTitle("Logout")
@@ -121,6 +133,13 @@ class MainActivity : AppCompatActivity(){
                 }
             }
             return@setNavigationItemSelectedListener true
+        }
+
+        headerView.setOnClickListener {
+            supportFragmentManager.beginTransaction().replace(R.id.frameLayout, MyProfileFragment()).commit()
+            supportActionBar?.title = "My Profile"
+            drawerLayout.closeDrawers()
+            navigationView.menu.getItem(1).isChecked = true
         }
     }
 

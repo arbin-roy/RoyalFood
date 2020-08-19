@@ -28,6 +28,7 @@
     <string name="preference_file_name">RoyalFood Preference File</string>
     <string name="user_id">User ID</string>
     <string name="user_data_name">User Nme</string>
+    <string name="user_image">User Image</string>
     <string name="user_data_mobile">User Mobile</string>
     <string name="user_data_email">User Email</string>
     <string name="user_data_address">User Address</string>
@@ -43,15 +44,15 @@
     <string name="order_successfully_placed">Your order successfully placed</string>
     <string name="sort_restaurant">Sort</string>
     <string name="q1"><b>1. Can I order from multiple restaurants?</b></string>
-    <string name="a1"><font color= "@color/blackColor"><u><i>Ans:</i></u></font> No you can only order from one restaurant, and one item at a time.</string>
+    <string name="a1"><font color="@color/blackColor"><u><i>Ans:</i></u></font> No you can only order from one restaurant, and one item at a time.</string>
     <string name="q2"><b>2. Will the food come to my door step?</b></string>
-    <string name="a2"><font color= "@color/blackColor"><u><i>Ans:</i></u></font> No, as it\'s just a concept app. Your ordered food will not come to your doorstep.</string>
+    <string name="a2"><font color="@color/blackColor"><u><i>Ans:</i></u></font> No, as it\'s just a concept app. Your ordered food will not come to your doorstep.</string>
     <string name="q3"><b>3. Is my data safe, which I used to register myself?</b></string>
-    <string name="a3"><font color= "@color/blackColor"><u><i>Ans:</i></u></font> Your data is securely saved in Internshala hosted server. Rest I don\'t know ¯\\_(ツ)_/¯ !</string>
+    <string name="a3"><font color="@color/blackColor"><u><i>Ans:</i></u></font> Your data is securely saved in Internshala hosted server. Rest I don\'t know ¯\\_(ツ)_/¯ !</string>
     <string name="q4"><b>4. If the app crashes at some point, what should I do?</b></string>
-    <string name="a4"><font color= "@color/blackColor"><u><i>Ans:</i></u></font> Try the below steps:- \n\n a. Clear the app data from system settings, and run the app again. \n \n b. Force stop the application and clear it from the memory(Recent screen), than run again. \n \n c. If above solutions does not work, keep a note of the thing you are doing which is causing the crash, and then contact the developer.</string>
+    <string name="a4"><font color="@color/blackColor"><u><i>Ans:</i></u></font> Try the below steps:- \n\n a. Clear the app data from system settings, and run the app again. \n \n b. Force stop the application and clear it from the memory(Recent screen), than run again. \n \n c. If above solutions does not work, keep a note of the thing you are doing which is causing the crash, and then contact the developer(see below).</string>
     <string name="q5"><b>5. Connection Establishment failed?</b></string>
-    <string name="a5"><font color= "@color/blackColor"><u><i>Ans:</i></u></font> This problem mainly occurs, when the app is unable to communicate with the server. \n \nTo resolve this issue, try the below steps:- \n\n a. Check your internet connection is not broken. \n\n b. Restart the app, and check again. \n\n c. Server is down, come back later!</string>
+    <string name="a5"><font color="@color/blackColor"><u><i>Ans:</i></u></font> This problem mainly occurs, when the app is unable to communicate with the server. \n \nTo resolve this issue, try the below steps:- \n\n a. Check your internet connection is not broken. \n\n b. Restart the app, and check again. \n\n c. Server is down, come back later!</string>
     <string name="no_order_history">You haven\'t placed any orders yet</string>
     <string name="enter_the_otp_send_to_the_registered_mail_address">Enter the OTP send to the Registered mail address</string>
     <string name="btn_Submit">Submit</string>
@@ -63,5 +64,18 @@
     <string name="each_person">/Person</string>
     <string name="btn_Add">ADD</string>
     <string name="static_Rs">Rs:</string>
-    <string name="search_restaurant">Search Restaurant</string>
+    <string name="search_restaurant">Search</string>
+    <string name="clear_all_from_fav">Clear All</string>
+    <string name="something_wrong_happend">Something wrong happened</string>
+    <string name="about_app">About App</string>
+    <string name="description"><u>Description</u>:</string>
+    <string name="online_database">\n<font color="@color/blackColor"><u>Online Database</u></font> :- All of the details (excluding the FAQ page and this one), are coming from an online server. Which means data that are showing on the home screen to menu selection, all are coming from the online database.</string>
+    <string name="rest_API">\n<font color="@color/blackColor"><u>REST APIs</u></font> :- The data coming from the online databases are fetching using the REST API. Sending a token in the header along with the object, make sure at the server end that the request is coming from an authenticated user.</string>
+    <string name="offline_database">\n<font color="@color/blackColor"><u>Offline Database</u></font> :- App uses the offline databases to perform multiple tasks, like saving favorite items in locally, or saving the menu items while moving to the cart page, using one library called Room Persistence Library, which works on MySQL.</string>
+    <string name="multithreading">\n<font color="@color/blackColor"><u>MultiThreading</u></font> :- For doing CPU intensive work like handling databases. For instance, here app achieves multithreading by using AsyncTask class.</string>
+    <string name="about_description">In this app you can order from multiple restaurants. You can select one restaurant, in there many items are available to order. In Cart page, you can check what items are going to be ordered and total amount of price. You can always go back to menu page to change items, as per your choice! After ordering, you will see a successful message, and anytime you can check your previous orders in Order History section.</string>
+    <string name="dev_name">By ARBIN ROY</string>
+    <string name="feedback">Any suggestion? Please provide feedback</string>
+    <string name="btn_email">Email</string>
+    <string name="query">Any query? Contact developer</string>
 </resources>

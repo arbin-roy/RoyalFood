@@ -7,4 +7,5 @@
     <color name="goldenColor">#ffd700</color>
     <color name="redColor">#d80000</color>
     <color name="blackColor">#000000</color>
+    <color name="greyColor">#a9a9a9</color>
 </resources>

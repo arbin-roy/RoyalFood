@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <group>
+
+        <item
+            android:title="@string/search_restaurant"
+            android:id="@+id/search"
+            android:icon="@drawable/ic_search_button"
+            app:showAsAction="always|collapseActionView"
+            app:actionViewClass="androidx.appcompat.widget.SearchView" />
+
+        <item
+            android:id="@+id/sort_restaurants"
+            android:icon="@drawable/ic_sort_button"
+            android:title="@string/sort_restaurant"
+            app:showAsAction="ifRoom"/>
+
+    </group>
+
+</menu>

@@ -13,6 +13,23 @@
         android:padding="5dp"/>
 
     <RelativeLayout
+        android:id="@+id/noSearchResult"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/whiteColor">
+
+        <TextView
+            android:id="@+id/noSearchResultText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/dummy_text"
+            android:textSize="20sp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="50dp" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
         android:id="@+id/progressLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -23,6 +40,29 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/allResSomethingWrong"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/alertLogo"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:src="@drawable/alert_logo"
+            android:layout_centerInParent="true"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_below="@id/alertLogo"
+            android:text="@string/something_wrong_happend"
+            android:textSize="18sp"
+            android:textColor="@color/redColor"/>
 
     </RelativeLayout>
 

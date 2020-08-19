@@ -36,7 +36,7 @@ class HomeRecyclerAdapter(val context: Context, val list: ArrayList<Restaurant>)
         holder.txtResturantName.text= res.res_name
         holder.txtResturantRating.text= res.res_rating
         holder.txtPricePerPerson.text= res.cost_for_one
-        Picasso.get().load(res.res_image).into(holder.imgResImage)
+        Picasso.get().load(res.res_image).error(R.drawable.alert_logo).into(holder.imgResImage)
 
         val resDetails= list[position]
         holder.resentity= ResturantEntities(

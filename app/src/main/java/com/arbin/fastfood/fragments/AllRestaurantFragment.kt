@@ -1,5 +1,6 @@
 package com.arbin.fastfood.fragments
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
@@ -9,6 +10,7 @@ import android.view.*
 import android.widget.EditText
 import androidx.fragment.app.Fragment
 import android.widget.RelativeLayout
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.SearchView
@@ -28,16 +30,19 @@ import kotlin.collections.ArrayList
 import kotlin.collections.HashMap
 
 
-class AllRestaurantFragment : Fragment() {
+class AllRestaurantFragment : Fragment(){
 
     lateinit var recyclerAdapter: HomeRecyclerAdapter
     lateinit var recyclerAllRes: RecyclerView
     lateinit var layoutManager: RecyclerView.LayoutManager
     lateinit var progressLayout: RelativeLayout
+    lateinit var noSearchResult: RelativeLayout
+    lateinit var allResSomethingWrong: RelativeLayout
     var resInfoList = ArrayList<Restaurant>()
     var displayList = ArrayList<Restaurant>()
     private var checkedItem: Int = 0
     private lateinit var searchView: SearchView
+    lateinit var noSearchResultText: TextView
 
     private val costComparator = Comparator<Restaurant>{ res1, res2 ->
         if (res1.cost_for_one.compareTo(res2.cost_for_one) == 0){
@@ -65,6 +70,11 @@ class AllRestaurantFragment : Fragment() {
         recyclerAllRes= view.findViewById(R.id.recyclerAllRes)
         layoutManager= LinearLayoutManager(activity)
         progressLayout= view.findViewById(R.id.progressLayout)
+        noSearchResult = view.findViewById(R.id.noSearchResult)
+        allResSomethingWrong = view.findViewById(R.id.allResSomethingWrong)
+        allResSomethingWrong.visibility = View.GONE
+        noSearchResult.visibility = View.GONE
+        noSearchResultText = view.findViewById(R.id.noSearchResultText)
 
         val queue= Volley.newRequestQueue(activity)
         val url= "http://13.235.250.119/v2/restaurants/fetch_result/"
@@ -96,6 +106,8 @@ class AllRestaurantFragment : Fragment() {
                     Toast.makeText(activity as Context, "JSONException $it", Toast.LENGTH_LONG).show()
                 }
             }, Response.ErrorListener {
+                progressLayout.visibility = View.GONE
+                allResSomethingWrong.visibility = View.VISIBLE
                 val dialog = AlertDialog.Builder(activity as Context)
                 dialog.setTitle("Error")
                 dialog.setMessage("Connection Established failed")
@@ -118,6 +130,8 @@ class AllRestaurantFragment : Fragment() {
             }
             queue.add(jsonObjectRequest)
         }else{
+            progressLayout.visibility = View.GONE
+            allResSomethingWrong.visibility = View.VISIBLE
             val dialog = AlertDialog.Builder(activity as Context)
             dialog.setTitle("Error")
             dialog.setMessage("Internet Connection not Found")
@@ -137,7 +151,7 @@ class AllRestaurantFragment : Fragment() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater.inflate(R.menu.sort_restaurant, menu)
+        inflater.inflate(R.menu.all_res_menu, menu)
         val searchItem = menu.findItem(R.id.search)
         searchView = searchItem.actionView as SearchView
 
@@ -152,7 +166,7 @@ class AllRestaurantFragment : Fragment() {
                 val optionNames= arrayOf("Cost(Low to High)", "Cost(High to Low)", "Rating")
                 dialog.setTitle("Sort by?")
                 dialog.setSingleChoiceItems(optionNames, checkedItem, DialogInterface.OnClickListener(
-                    fun(_: DialogInterface, option: Int){
+                    fun( _: DialogInterface, option: Int){
                         when(option){
                             0 -> {
                                 Collections.sort(displayList, costComparator)
@@ -172,11 +186,20 @@ class AllRestaurantFragment : Fragment() {
                     }
                 ))
                 dialog.setPositiveButton("Sort"){ _ , _ ->
-                    if (checkedItem == 0){
-                        Collections.sort(displayList, costComparator)
-                        recyclerAdapter.notifyDataSetChanged()
+                    if (displayList.isNotEmpty()){
+                        if (checkedItem == 0){
+                            Collections.sort(displayList, costComparator)
+                            recyclerAdapter.notifyDataSetChanged()
+                        }else{
+                            recyclerAdapter.notifyDataSetChanged()
+                        }
                     }else{
-                        recyclerAdapter.notifyDataSetChanged()
+                        val infoDialog = AlertDialog.Builder(activity as Context)
+                        infoDialog.setMessage("No Data available to sort")
+                        infoDialog.setPositiveButton("OK"){ _, _ ->
+
+                        }
+                        infoDialog.create().show()
                     }
                 }
                 dialog.setNegativeButton("Cancel"){ _ , _ ->
@@ -186,30 +209,50 @@ class AllRestaurantFragment : Fragment() {
                 dialog.show()
             }
             R.id.search -> {
-                searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
-                    override fun onQueryTextSubmit(query: String?): Boolean {
-                        return true
-                    }
-
-                    override fun onQueryTextChange(newText: String?): Boolean {
-                        if (newText!!.isNotEmpty()){
-                            displayList.clear()
-                            val search = newText.toLowerCase(Locale.ROOT)
-                            resInfoList.forEach {
-                                if (it.res_name.toLowerCase(Locale.ROOT).contains(search)){
-                                    displayList.add(it)
-                                }
-                            }
-                            recyclerAdapter.notifyDataSetChanged()
-                        }else{
-                            displayList.clear()
-                            displayList.addAll(resInfoList)
-                            checkedItem = 0
-                            recyclerAdapter.notifyDataSetChanged()
+                if (displayList.isNotEmpty()){
+                    searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
+                        override fun onQueryTextSubmit(query: String?): Boolean {
+                            return true
                         }
-                        return true
+
+                        @SuppressLint("SetTextI18n")
+                        override fun onQueryTextChange(newText: String?): Boolean {
+                            if (newText!!.isNotEmpty()){
+                                displayList.clear()
+                                noSearchResult.visibility = View.GONE
+                                val search = newText.toLowerCase(Locale.ROOT)
+                                resInfoList.forEach {
+                                    if (it.res_name.toLowerCase(Locale.ROOT).contains(search)){
+                                        noSearchResult.visibility = View.GONE
+                                        displayList.add(it)
+                                    }else if (recyclerAdapter.itemCount == 0){
+                                        noSearchResult.visibility = View.VISIBLE
+                                        noSearchResultText.text = "No results found for '$newText'"
+                                    }
+                                }
+                                recyclerAdapter.notifyDataSetChanged()
+                            }else{
+                                noSearchResult.visibility = View.GONE
+                                displayList.clear()
+                                displayList.addAll(resInfoList)
+                                checkedItem = 0
+                                recyclerAdapter.notifyDataSetChanged()
+                            }
+                            return true
+                        }
+                    })
+                    searchView.setOnCloseListener {
+                        Toast.makeText(activity , "Uff", Toast.LENGTH_LONG).show()
+                        return@setOnCloseListener true
                     }
-                })
+                }else{
+                    val dialog = AlertDialog.Builder(activity as Context)
+                    dialog.setMessage("No Data available to search")
+                    dialog.setPositiveButton("OK"){ _ , _ ->
+
+                    }
+                    dialog.create().show()
+                }
             }
         }
         return super.onOptionsItemSelected(item)

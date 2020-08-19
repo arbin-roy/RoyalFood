@@ -84,4 +84,27 @@
 
     </RelativeLayout>
 
+    <RelativeLayout
+        android:id="@+id/menuItemSomethingWrong"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/alertLogo"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:src="@drawable/alert_logo"
+            android:layout_centerInParent="true"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_below="@id/alertLogo"
+            android:text="@string/something_wrong_happend"
+            android:textSize="18sp"
+            android:textColor="@color/redColor"/>
+
+    </RelativeLayout>
+
 </RelativeLayout>

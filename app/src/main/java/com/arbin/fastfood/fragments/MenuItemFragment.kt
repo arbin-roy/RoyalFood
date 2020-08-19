@@ -35,6 +35,7 @@ class MenuItemFragment(val data: String, val name: String) : Fragment(), Click{
     lateinit var layoutManager: RecyclerView.LayoutManager
     private lateinit var toolbarMenuItem: Toolbar
     lateinit var rlMenuItem: RelativeLayout
+    lateinit var menuItemSomethingWrong: RelativeLayout
     private lateinit var btnGoToCart: Button
     lateinit var id: String
     var itemList = ArrayList<MenuItem>()
@@ -49,6 +50,8 @@ class MenuItemFragment(val data: String, val name: String) : Fragment(), Click{
         menuitemRecycler= view.findViewById(R.id.menuitemRecycler)
         layoutManager= LinearLayoutManager(activity)
         rlMenuItem= view.findViewById(R.id.rlMenuItem)
+        menuItemSomethingWrong= view.findViewById(R.id.menuItemSomethingWrong)
+        menuItemSomethingWrong.visibility = View.GONE
         btnGoToCart= view.findViewById(R.id.btnGotoCart)
         btnGoToCart.visibility= View.GONE
         toolbarMenuItem= view.findViewById(R.id.toolbarMenuItem)
@@ -82,9 +85,10 @@ class MenuItemFragment(val data: String, val name: String) : Fragment(), Click{
                 Toast.makeText(activity as Context, "JSONException", Toast.LENGTH_SHORT).show()
             }
         }, Response.ErrorListener {
-            Toast.makeText(activity as Context, "Network Not Found!", Toast.LENGTH_SHORT).show()
+            rlMenuItem.visibility= View.GONE
+            menuItemSomethingWrong.visibility = View.VISIBLE
         }){
-            override fun getHeaders(): MutableMap<String, String> {
+            override fun getHeaders(): MutableMap<String, String>{
                 val headers= HashMap<String, String>()
                 headers["Content-type"]= "application/json"
                 headers["token"]="aebb3b4a51733f"
@@ -113,7 +117,6 @@ class MenuItemFragment(val data: String, val name: String) : Fragment(), Click{
             val intent = Intent(activity, CartActivity::class.java)
             intent.putExtra("resName", name)
             startActivity(intent)
-            activity?.supportFragmentManager?.popBackStack()
         }
     }
 

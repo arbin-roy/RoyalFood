@@ -29,6 +29,11 @@
             android:icon="@drawable/question"/>
 
         <item
+            android:id="@+id/aboutApp"
+            android:title="@string/about_app"
+            android:icon="@drawable/about_app"/>
+
+        <item
             android:id="@+id/logout"
             android:title="@string/menu_logout"
             android:icon="@drawable/logout"/>

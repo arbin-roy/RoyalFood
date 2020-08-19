@@ -9,11 +9,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.Toast
-
 import com.arbin.fastfood.R
 
-
-class FAQFragment : Fragment() {
+class AboutAppFragment : Fragment() {
 
     private lateinit var sendEmail: Button
 
@@ -21,15 +19,17 @@ class FAQFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_f_a_q, container, false)
+        val view= inflater.inflate(R.layout.fragment_about_app, container, false)
 
-        sendEmail = view.findViewById(R.id.sendEmail)
-
+        sendEmail = view.findViewById(R.id.sendEmail1)
         sendEmail.setOnClickListener {
             val intent = Intent(Intent.ACTION_SENDTO, Uri.fromParts("mailto", "arbin03.01@gmail.com", null))
-            startActivity(Intent.createChooser(intent, "Choose an Email client"))
+            intent.putExtra(Intent.EXTRA_SUBJECT, "Feedback about RoyalFood")
+            startActivity(intent)
+            //startActivity(Intent.createChooser(intent, "Choose an Email client"))
         }
 
         return view
     }
+
 }

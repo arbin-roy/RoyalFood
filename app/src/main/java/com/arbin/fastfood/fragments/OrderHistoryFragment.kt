@@ -15,10 +15,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.android.volley.Response
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
-
 import com.arbin.fastfood.R
 import com.arbin.fastfood.adapter.OrderHistoryRecyclerAdapter
-import com.arbin.fastfood.model.MenuItem
 import com.arbin.fastfood.model.OrderedRestaurantDetails
 import org.json.JSONException
 
@@ -31,7 +29,7 @@ class OrderHistoryFragment : Fragment() {
     lateinit var recyclerAdapter: OrderHistoryRecyclerAdapter
     lateinit var rlOrderHistory: RelativeLayout
     lateinit var noOrderHistory: RelativeLayout
-    //var itemList = ArrayList<MenuItem>()
+    lateinit var orderHistorySomethingWrong: RelativeLayout
     var nameList = ArrayList<OrderedRestaurantDetails>()
     private var iD: String? ="Not Found"
 
@@ -45,6 +43,8 @@ class OrderHistoryFragment : Fragment() {
         layoutManager= LinearLayoutManager(activity)
         rlOrderHistory= view.findViewById(R.id.rlOrderHistory)
         noOrderHistory= view.findViewById(R.id.noOrderHistory)
+        orderHistorySomethingWrong= view.findViewById(R.id.orderHistorySomethingWrong)
+        orderHistorySomethingWrong.visibility = View.GONE
         userID= activity?.getSharedPreferences(getString(R.string.user_id), Context.MODE_PRIVATE) ?: return null
         iD = userID.getString("ID", "Not Found")
 
@@ -59,21 +59,11 @@ class OrderHistoryFragment : Fragment() {
                     for (i in 0 until data.length()){
                         val dataObject= data.getJSONObject(i)
                         val foodArray= dataObject.getJSONArray("food_items")
-                        /*for (j in 0 until foodArray.length()){
-                            val foodDetails= foodArray.getJSONObject(j)
-                            val details = MenuItem(
-                                foodDetails.getString("food_item_id"),
-                                foodDetails.getString("name"),
-                                foodDetails.getString("cost")
-                            )
-                            itemList.add(details)
-                        }*/
                         val restaurantName = OrderedRestaurantDetails(
                             dataObject.getString("restaurant_name"),
                             dataObject.getString("order_placed_at"),
                             foodArray
                         )
-
                         nameList.add(restaurantName)
                         recyclerAdapter= OrderHistoryRecyclerAdapter(activity as Context, nameList)
                         recyclerOrderHistory.adapter= recyclerAdapter
@@ -91,6 +81,7 @@ class OrderHistoryFragment : Fragment() {
                 Toast.makeText(activity, "JSONException", Toast.LENGTH_LONG).show()
             }
         }, Response.ErrorListener {
+            orderHistorySomethingWrong.visibility = View.VISIBLE
             val dialog = AlertDialog.Builder(activity as Context)
             dialog.setTitle("Error")
             dialog.setMessage("Connection Established failed")
